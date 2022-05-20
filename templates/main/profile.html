@@ -1,6 +1,8 @@
 {% extends "main/header.html" %}
 {% block title %}Profile Page{% endblock title %}
 {% block content %}
+<br>
+<h5><p class="text-center"> <a href="/homepage">Homepage</a></p></h5>
     <br>
     <div class="text-center">
         <h1>This is the profile page for {{ user.username }}</h1>
@@ -31,4 +33,10 @@
         </script>
 
     </div>
+<style>
+    .ui-helper-hidden-accessible{
+    display:none
+    }
+
+</style>
 {% endblock content %}
