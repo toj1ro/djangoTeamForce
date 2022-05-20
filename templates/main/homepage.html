@@ -1,0 +1,25 @@
+{% extends "main/header.html" %}
+{% block title %}Home Page{% endblock title %}
+{% block content %}
+    <p class="text-center">Your <a href="/profile">profile</a></p>
+    <div class="card-deck" style="margin: 0 auto;">
+        {% for user, tag_value in data.items %}
+            <div class="card border-dark mb-3" style="max-width: 18rem;">
+                <div class="card-header border-dark">
+                    {{ user.username }}
+                </div>
+                {% for tag, values in tag_value.items %}
+                    <div class="card-body text-dark">
+                        <h5 class="card-title">
+                            {{ tag.name }}:</h5>
+                        {% for value in values %}
+                            <span class="badge badge-secondary">{{ value.value }}</span>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock content %}

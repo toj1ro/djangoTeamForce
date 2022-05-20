@@ -1,0 +1,34 @@
+{% extends "main/header.html" %}
+{% block title %}Profile Page{% endblock title %}
+{% block content %}
+    <br>
+    <div class="text-center">
+        <h1>This is the profile page for {{ user.username }}</h1>
+        {% for tag,values in data.items %}
+            <br>{{ tag.name }}:
+            {% for value in values %}<span class="badge badge-secondary">{{ value.value }}</span>
+            {% endfor %}
+        {% endfor %}
+    </div>
+    <br>
+    <br>
+    <div class="text-center">
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="tag" id="tags" placeholder="Enter tag" required="required"/>
+            <input type="text" name="value" placeholder="Enter value" required="required"/>
+            <button class="btn btn-primary" type="submit">add tag</button>
+        </form>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+        <script>
+            $(function () {
+                $("#tags").autocomplete({
+                    source: '{% url 'main:autocomplete' %}',
+                    minLength: 2
+                });
+            });
+        </script>
+
+    </div>
+{% endblock content %}

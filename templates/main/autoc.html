@@ -1,0 +1,23 @@
+{% extends "main/header.html" %}
+{% block title %}Profile Page{% endblock title %}
+{% block content %}
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#tags").autocomplete({
+                source: '{% url 'main:autocomplete' %}',
+                minLength:2
+            });
+        });
+    </script>
+    </head>
+    <body>
+
+    <div class="ui-widget">
+        <label for="tags">Tags: </label>
+        <input id="tags">
+    </div>
+
+{% endblock content %}
